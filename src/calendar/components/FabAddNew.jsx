@@ -1,6 +1,6 @@
 import { addHours } from 'date-fns';
 import { useCalendarStore, useUiStore } from '../../hooks';
-
+import { BsPlus } from 'react-icons/bs';
 export const FabAddNew = () => {
   const { openDateModal } = useUiStore();
   const { setActiveEvent } = useCalendarStore();
@@ -21,8 +21,11 @@ export const FabAddNew = () => {
   };
 
   return (
-    <button className="btn btn-primary fab" onClick={handleClickNew}>
-      <i className="fas fa-plus"></i>
+    <button
+      className="bg-blue-500 p-4 fixed bottom-0 right-0 m-4 rounded-full"
+      onClick={handleClickNew}
+    >
+      <BsPlus size="40px" color="white" />
     </button>
   );
 };

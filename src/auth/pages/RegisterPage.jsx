@@ -1,19 +1,23 @@
+import React from 'react';
+import { AuthLayout } from '../layout/AuthLayout';
 import { ErrorMessage, Field, Form, Formik } from 'formik';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
 import * as Yup from 'yup';
-import { AuthLayout } from '../layout/AuthLayout';
 
-export const LoginPage = () => {
+export const RegisterPage = () => {
   const navigate = useNavigate();
 
   const [isError, setIsError] = useState(false);
   return (
-    <AuthLayout title="Login">
+    <AuthLayout title="Register">
       <Formik
-        initialValues={{ email: '', password: '' }}
+        initialValues={{ email: '', password: '', name: '' }}
         validationSchema={Yup.object({
+          name: Yup.string()
+            .min(2, 'Ingrese un nombre con al menos 2 caracteres')
+            .required('El nombre es requerido'),
           email: Yup.string()
             .email('Email Inválido')
             .required('El email es requerido'),
@@ -35,6 +39,28 @@ export const LoginPage = () => {
       >
         {({ errors, touched }) => (
           <Form className=" flex flex-col">
+            <label htmlFor="name" className={`mb-1 mt-6 `}>
+              Nombre
+            </label>
+            <Field
+              type="name"
+              name="name"
+              placeholder="Juan"
+              className={`bg-gray-50 border text-gray-900 text-sm rounded-lg  block w-full p-2.5 ${
+                touched.name && errors.name
+                  ? 'border-red-500 focus:ring-red-500 focus:border-red-500'
+                  : 'border-gray-300 focus:ring-blue-500 focus:border-blue-500'
+              }`}
+            />
+
+            <ErrorMessage
+              name="name"
+              component={() => (
+                <p className="mt-3 text-md text-red-600 dark:text-red-500">
+                  {errors.name}
+                </p>
+              )}
+            />
             <label htmlFor="email" className={`mb-1 mt-6 `}>
               Correo Electrónico
             </label>
@@ -107,10 +133,10 @@ export const LoginPage = () => {
         )}
       </Formik>
       <Link
-        to="/auth/register"
+        to="auth/login"
         className="text-blue-500 text-end underline decoration-1"
       >
-        Crear cuenta
+        Ya tienes una cuenta?
       </Link>
     </AuthLayout>
   );

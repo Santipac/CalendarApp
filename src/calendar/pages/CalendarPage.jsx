@@ -44,6 +44,7 @@ export const CalendarPage = () => {
     <>
       <Navbar />
       <Calendar
+        className="p-2"
         messages={messages}
         culture="es"
         defaultView={lastView}
@@ -58,7 +59,7 @@ export const CalendarPage = () => {
         onDoubleClickEvent={onDoubleClick}
         onSelectEvent={onSelected}
         onView={onViewChanged}
-        style={{ height: 'calc(100vh - 80px)' }}
+        style={{ height: '89vh' }}
       />
       <CalendarModal />
       <FabAddNew />

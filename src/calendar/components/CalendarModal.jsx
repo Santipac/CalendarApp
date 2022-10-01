@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 import 'react-datepicker/dist/react-datepicker.css';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import { useCalendarStore, useUiStore } from '../../hooks';
-
+import { RiSave3Fill } from 'react-icons/ri';
 registerLocale('es', es);
 
 const customStyles = {
@@ -89,14 +89,14 @@ export const CalendarModal = () => {
       overlayClassName="modal-fondo"
       closeTimeoutMS={200}
     >
-      <h1> Nuevo evento </h1>
+      <h1 className="text-2xl font-bold p-2"> Evento </h1>
       <hr />
-      <form className="container" onSubmit={onSubmit}>
-        <div className="form-group mb-2">
+      <form className="mt-2 p-2" onSubmit={onSubmit}>
+        <div className="form-group my-1 flex flex-col ">
           <label>Fecha y hora inicio</label>
           <DatePicker
             selected={formValues.start}
-            className="form-control"
+            className="bg-gray-50 border text-gray-900 text-md  focus:ring-blue-500 focus:border-blue-500 rounded-lg  block w-full p-2.5"
             onChange={event => onDateChanged(event, 'start')}
             dateFormat="Pp"
             showTimeSelect
@@ -105,12 +105,12 @@ export const CalendarModal = () => {
           />
         </div>
 
-        <div className="form-group mb-2">
+        <div className="form-group mb-4 flex flex-col ">
           <label>Fecha y hora fin</label>
           <DatePicker
             minDate={formValues.start}
             selected={formValues.end}
-            className="form-control"
+            className="bg-gray-50 border text-gray-900 text-md  focus:ring-blue-500 focus:border-blue-500 rounded-lg  block w-full p-2.5"
             onChange={event => onDateChanged(event, 'end')}
             dateFormat="Pp"
             showTimeSelect
@@ -120,11 +120,11 @@ export const CalendarModal = () => {
         </div>
 
         <hr />
-        <div className="form-group mb-2">
+        <div className="form-group mt-4 flex flex-col ">
           <label>Titulo y notas</label>
           <input
             type="text"
-            className={`form-control ${titleClass}`}
+            className={`bg-gray-50 border text-gray-900 text-md  focus:ring-blue-500 focus:border-blue-500 rounded-lg  block w-full p-2.5 ${titleClass}`}
             placeholder="Título del evento"
             name="title"
             autoComplete="off"
@@ -136,10 +136,10 @@ export const CalendarModal = () => {
           </small>
         </div>
 
-        <div className="form-group mb-2">
+        <div className="form-group my-3 flex flex-col ">
           <textarea
             type="text"
-            className="form-control"
+            className="bg-gray-50 border text-gray-900 text-md border-blue-500 rounded-lg block w-full p-2.5"
             placeholder="Notas"
             rows="5"
             name="notes"
@@ -151,9 +151,12 @@ export const CalendarModal = () => {
           </small>
         </div>
 
-        <button type="submit" className="btn btn-outline-primary btn-block">
-          <i className="far fa-save"></i>
-          <span> Guardar</span>
+        <button
+          type="submit"
+          className="p-2 bg-blue-500 text-white font-semibold hover:bg-blue-600 flex items-center rounded-md"
+        >
+          <RiSave3Fill size="25px" />
+          <span> &nbsp; Guardar</span>
         </button>
       </form>
     </Modal>

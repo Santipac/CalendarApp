@@ -18,12 +18,18 @@
     "react-modal": "^3.15.1",
     "react-redux": "^8.0.4",
     "react-router-dom": "^6.3.0",
-    "sweetalert2": "^11.4.36"
+    "sweetalert2": "^11.4.36",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",
     "@types/react-dom": "^18.0.6",
     "@vitejs/plugin-react": "^2.1.0",
+    "autoprefixer": "^10.4.12",
+    "formik": "^2.2.9",
+    "postcss": "^8.4.17",
+    "react-icons": "^4.4.0",
+    "tailwindcss": "^3.1.8",
     "vite": "^3.1.0"
   }
 }
