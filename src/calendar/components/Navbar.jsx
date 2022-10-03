@@ -6,7 +6,7 @@ export const Navbar = () => {
   const { startLogout, user } = useAuthStore();
   return (
     <div className="h-[8vh] bg-[#1d1d1b] mb-4 px-4 flex justify-between items-center">
-      <p className="text-white font-semibold flex items-center">
+      <p className="text-white font-semibold text-lg flex items-center">
         <FcCalendar size="30px" />
         &nbsp; {user.name}
       </p>
